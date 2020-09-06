@@ -32,6 +32,10 @@ gem 'cancancan', '~> 1.15.0'
 gem 'carrierwave'
 ### gem 'rails_admin_rollincode', '~> 1.0'
 gem 'rails_admin_rollincode', :git => 'git@github.com:Davidsonts/rails_admin_rollincode.git'
+# Gem para gerar os pdfs
+gem 'prawn-rails'
+# Gem para gerar os gráficos
+gem 'gruff'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

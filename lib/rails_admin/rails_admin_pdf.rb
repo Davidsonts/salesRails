@@ -8,7 +8,21 @@ require 'gruff'
 module RailsAdmin
   module Config
     module Actions
-      class Pdf < Base RailsAdmin::Config::Actions.register(self) register_instance_option :member do true end register_instance_option :pjax? do false end register_instance_option :controller do Proc.new do # Configurando PDF PDF_OPTIONS = { :page_size => "A4",
+      class Pdf < Base RailsAdmin::Config::Actions.register(self) 
+
+        register_instance_option :member do 
+          true 
+        end 
+
+        register_instance_option :pjax? do 
+          false 
+        end 
+
+        register_instance_option :controller do 
+            Proc.new do 
+                
+            # Configurando PDF 
+            PDF_OPTIONS = { :page_size => "A4",
               :page_layout => :portrait,
               :margin      => [40, 75]
             }
