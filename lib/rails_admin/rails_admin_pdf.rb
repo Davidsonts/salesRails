@@ -8,7 +8,8 @@ require 'gruff'
 module RailsAdmin
   module Config
     module Actions
-      class Pdf < Base RailsAdmin::Config::Actions.register(self) 
+      class Pdf < Base 
+        RailsAdmin::Config::Actions.register(self) 
 
         register_instance_option :member do 
           true 
@@ -19,8 +20,7 @@ module RailsAdmin
         end 
 
         register_instance_option :controller do 
-            Proc.new do 
-                
+          Proc.new do 
             # Configurando PDF 
             PDF_OPTIONS = { :page_size => "A4",
               :page_layout => :portrait,
@@ -94,26 +94,25 @@ module RailsAdmin
                 total = 0
 
                 @object.clients.each do |c|
-                  pdf.text "#{c.name}",
-                    :size = 12, :align = :justify, :inline_format = true, :style = :bold
+                  pdf.text "#{c.name}", 
+                    :size => 12, :align => :justify, :inline_format => true, :style => :bold
                   pdf.move_down 8
 
                   pdf.text "Da empresa: #{c.company_name}",
-                    :size = 12, :align = :justify, :inline_format = true
+                    :size => 12, :align => :justify, :inline_format => true
                   pdf.move_down 8
 
                   pdf.text "Cliente desde #{c.created_at.strftime("%d/%m/%y as %H:%M")}",
-                    :size = 12, :align = :justify, :inline_format = true
+                    :size => 12, :align => :justify, :inline_format => true
                   pdf.move_down 8
 
                   total += 1
                 end
 
                 pdf.move_down 10
-                pdf.text "Total: #{total}", :size = 12, :align = :justify, :inline_format = true
+                pdf.text "Total: #{total}", :size => 12, :align => :justify, :inline_format => true
                 pdf.move_down 20
               end
-
 
               if @object.sales.count  0
                 # Cria o objeto Gruff
@@ -135,25 +134,24 @@ module RailsAdmin
 
                 pdf.start_new_page
 
-                pdf.text "Gráfico de Vendas", :size = 20, :style = :bold, :align = :center
+                pdf.text "Gráfico de Vendas", :size => 20, :style => :bold, :align => :center
 
                 # Incluir o gráfico numero 2
-                pdf.image "public/graph.jpg", :scale = 0.50
+                pdf.image "public/graph.jpg", :scale => 0.50
               end
-
 
               # Muda de font para Helvetica
               pdf.font "Helvetica"
               # Inclui um texto com um link clicável (usando a tag link) no bottom da folha do lado esquerdo e coloca uma cor especifica nessa parte (usando a tag color)
-              pdf.text "Link Para o Manul do Prawn clicável", :size = 10, :inline_format = true, :valign = :bottom, :align = :left
+              pdf.text "Link Para o Manul do Prawn clicável", :size => 10, :inline_format => true, :valign => :bottom, :align => :left
               # Inclui em baixo da folha do lado direito a data e o némero da página usando a tag page
-              pdf.number_pages "Gerado: #{(Time.now).strftime("%d/%m/%y as %H:%M")} - Página ", :start_count_at = 0, :page_filter = :all, :at = [pdf.bounds.right - 140, 7], :align = :right, :size = 8
+              pdf.number_pages "Gerado: #{(Time.now).strftime("%d/%m/%y as %H:%M")} - Página ", :start_count_at => 0, :page_filter => :all, :at => [pdf.bounds.right - 140, 7], :align => :right, :size => 8
               # Gera no nosso PDF e coloca na pasta public com o nome agreement.pdf
               pdf.render_file("public/#{ramdom_file_name}.pdf")
             end
 
             File.open("public/#{ramdom_file_name}.pdf", 'r') do |f|
-              send_data f.read.force_encoding('BINARY'), :filename = 'pdf', :type = "application/pdf", :disposition = "attachment"
+              send_data f.read.force_encoding('BINARY'), :filename => 'pdf', :type => "application/pdf", :disposition => "attachment"
             end
             File.delete("public/#{ramdom_file_name}.pdf")
             File.delete("public/graph.jpg") if @object.sales.count  0
