@@ -130,14 +130,14 @@ module RailsAdmin
                 sales_values.each {|key, value| g.data(key, value)}
 
                 # Gera a imagem no diretório público (você pode escolher onde gerar)
-                g.write('public/graph.jpg')
+                g.write("public/#{ramdom_file_name}_graph.jpg")
 
                 pdf.start_new_page
 
                 pdf.text "Gráfico de Vendas", :size => 20, :style => :bold, :align => :center
 
                 # Incluir o gráfico numero 2
-                pdf.image "public/graph.jpg", :scale => 0.50
+                pdf.image "public/#{ramdom_file_name}_graph.jpg", :scale => 0.50
               end
 
               # Muda de font para Helvetica
@@ -154,7 +154,7 @@ module RailsAdmin
               send_data f.read.force_encoding('BINARY'), :filename => 'pdf', :type => "application/pdf", :disposition => "attachment"
             end
             File.delete("public/#{ramdom_file_name}.pdf")
-            File.delete("public/graph.jpg") if @object.sales.count  0
+            File.delete("public/#{ramdom_file_name}_graph.jpg") if @object.sales.count  0
           end
         end
 
