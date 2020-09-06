@@ -1,7 +1,13 @@
 RailsAdmin.config do |config|
 
   config.main_app_name = ["Representantes Comerciais", ""]
-  
+
+  config.navigation_static_links = {
+    'DÓLAR COMERCIAL' => 'https://economia.uol.com.br/cotacoes/cambio/'
+  }
+   
+  config.navigation_static_label = "Lins Úteis"
+
   ### Popular gems integration
 
   ## == Devise ==
