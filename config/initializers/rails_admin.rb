@@ -1,5 +1,7 @@
 RailsAdmin.config do |config|
-
+  require Rails.root.join('lib', 'rails_admin', 'rails_admin_pdf.rb')
+  RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::Pdf)
+  
   config.main_app_name = ["Representantes Comerciais", ""]
 
   config.navigation_static_links = {
@@ -109,7 +111,7 @@ RailsAdmin.config do |config|
    
     end
   end
-  
+
   config.model Discount do
     parent Product
   end
@@ -168,7 +170,9 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
-
+    pdf do 
+      only user
+    end
     ## With an audit adapter, you can add:
     # history_index
     # history_show
