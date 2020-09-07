@@ -357,3 +357,6 @@ Style/TernaryParentheses:
 # URISchemes: http, https
 Layout/LineLength:
   Max: 204
+
+AllCops:
+  EnabledByDefault: true
