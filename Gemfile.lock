@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:Davidsonts/rails_admin_rollincode.git
-  revision: 5c8d47f2792e0749cf3cdc8caa2b7e798ec1f80c
+  revision: 38d3335e7b0a03096f8b158bba3de5f8bcbdbff0
   specs:
     rails_admin_rollincode (1.3)
       rails (>= 4.0, < 7)
