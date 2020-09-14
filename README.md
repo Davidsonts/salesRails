@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```
+$ bundle
 
-Things you may want to cover:
+$ rake db:create db:migrate db:seed
 
-* Ruby version
+$ rails s
 
-* System dependencies
+```
 
-* Configuration
+http://127.0.0.1:3000
 
-* Database creation
+User: manager@teste.com
+Password: 123456
 
-* Database initialization
+![DASHBOARD](https://i.imgur.com/EvRgOe3.png, "rollincode")
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
